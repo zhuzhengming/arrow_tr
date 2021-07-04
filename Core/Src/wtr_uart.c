@@ -69,24 +69,24 @@ void UART1Decode()
     }
 }
 
+#define MAX_MOTORPOS 450
+
 void UART6Decode(){
     for (int i = 0; i < BAG_LENGTH; i++) {
 		Bag_t tempBag = *(Bag_t*) (void*) (&(UART6ReceiveData[i]));
 		if (tempBag.head[0] == header[0] &&
 		    tempBag.head[1] == header[1]) {
 
-		    //麻烦的写法
-
-            recvMsg = *(RecvMsg_t*)(void*)(tempBag.payload);// 方便的写法 没试过行不行
+            recvMsg = *(RecvMsg_t*)(void*)(tempBag.payload);
 
             if(recvMsg.left.motorPos<0)	recvMsg.left.motorPos = 0;
             if(recvMsg.mid.motorPos<0)	recvMsg.mid.motorPos = 0;
             if(recvMsg.right.motorPos<0)	recvMsg.right.motorPos = 0;
             if(recvMsg.yaw<0)	recvMsg.yaw = 0;
 
-            if(recvMsg.left.motorPos>450)	recvMsg.left.motorPos = 450;
-            if(recvMsg.mid.motorPos>450)	recvMsg.mid.motorPos = 450;
-            if(recvMsg.right.motorPos>450)	recvMsg.right.motorPos = 450;
+            if(recvMsg.left.motorPos>MAX_MOTORPOS)	recvMsg.left.motorPos = MAX_MOTORPOS;
+            if(recvMsg.mid.motorPos>MAX_MOTORPOS)	recvMsg.mid.motorPos = MAX_MOTORPOS;
+            if(recvMsg.right.motorPos>MAX_MOTORPOS)	recvMsg.right.motorPos = MAX_MOTORPOS;
             if(recvMsg.yaw>PI)	recvMsg.yaw = PI;
 
 			break;
@@ -95,7 +95,7 @@ void UART6Decode(){
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-	HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);
+	
     if(huart == &huart1){
         UART1Decode();
     }

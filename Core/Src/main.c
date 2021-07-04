@@ -99,11 +99,13 @@ int main(void)
   /* USER CODE BEGIN 2 */
   WTR_Init();
   /* USER CODE END 2 */
-  HAL_UART_Receive_DMA(&huart6, UART6ReceiveData, BAG_LENGTH*2 );
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);
+    HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

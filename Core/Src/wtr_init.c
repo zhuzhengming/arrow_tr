@@ -2,11 +2,11 @@
 #include "wtr_can.h"
 
 void laser_init(){
-    HAL_GPIO_WritePin(GPIOH,GPIO_PIN_12,GPIO_PIN_RESET);//CAB, negative sample
-    for(uint8_t t=0xF; t; t--);
-    HAL_GPIO_WritePin(GPIOH,GPIO_PIN_12,GPIO_PIN_SET);//CAB
+	HAL_GPIO_WritePin(CAB_GPIO_Port,CAB_Pin,GPIO_PIN_RESET);//CAB, negative sample postive hold
+	for(uint8_t t=0xF; t; t--);
+	HAL_GPIO_WritePin(CAB_GPIO_Port,CAB_Pin,GPIO_PIN_SET);//CAB
 
-    HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_SET);
 }
 
 

@@ -29,72 +29,65 @@ void M3508_ctrl(){
     moveToTargetPoint(recvMsg.mid.motorPos, 1);
     moveToTargetPoint(recvMsg.right.motorPos, 2);
 
-//	hDJI[0].speedPID.ref = recvMsg.left.motorPos*10;
-//	hDJI[0].speedPID.fdb = hDJI[0].FdbData.rpm;
-//	hDJI[1].speedPID.ref = recvMsg.mid.motorPos*10;
-//	hDJI[1].speedPID.fdb = hDJI[1].FdbData.rpm;
-//	hDJI[2].speedPID.ref = recvMsg.right.motorPos*10;
-//	hDJI[2].speedPID.fdb = hDJI[2].FdbData.rpm;
-
 	PID_Calc(&hDJI[0].speedPID);
 	PID_Calc(&hDJI[1].speedPID);
 	PID_Calc(&hDJI[2].speedPID);
     CanTransmit_DJI_1234(&hcan1, hDJI[0].speedPID.output, hDJI[1].speedPID.output, hDJI[2].speedPID.output, 0);
 }
 void ElectroMag_ctrl(){
-    if(recvMsg.left.electromagnetOrder == 0x01){
-        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_SET);
-    }
-    else{
+    if(recvMsg.left.electromagnetOrder == 0x02){
         HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
         HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_RESET);
     }
-
-    if(recvMsg.mid.electromagnetOrder == 0x01){
-        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(GPIOG, GPIO_PIN_2, GPIO_PIN_SET);
-    }
     else{
+        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_SET);
+    }
+
+    if(recvMsg.mid.electromagnetOrder == 0x02){
         HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
         HAL_GPIO_WritePin(GPIOG, GPIO_PIN_2, GPIO_PIN_RESET);
     }
-
-    if(recvMsg.right.electromagnetOrder == 0x01){
-        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(GPIOG, GPIO_PIN_3, GPIO_PIN_SET);
-    }
     else{
+        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(GPIOG, GPIO_PIN_2, GPIO_PIN_SET);
+    }
+
+    if(recvMsg.right.electromagnetOrder == 0x02){
         HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
         HAL_GPIO_WritePin(GPIOG, GPIO_PIN_3, GPIO_PIN_RESET);
+    }
+    else{
+        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(GPIOG, GPIO_PIN_3, GPIO_PIN_SET);
     }
 }
 
 
-#define MAX_DST_10V 3000.0
-#define MIN_DST_0V 50.0
-
+#define MAX_DST_10V 10000.0//10m
+#define MIN_DST_0V 100.0//10cm
+ 
 uint16_t spi_data[8]={0};
 uint8_t *pData=(uint8_t *)spi_data;
 float sick_dst[8]={0};
 
 void Laser_ctrl(){
 
-    while(HAL_GPIO_ReadPin(GPIOI,GPIO_PIN_0));
-
-    HAL_GPIO_WritePin(GPIOH,GPIO_PIN_11,GPIO_PIN_RESET);//CSL
-    HAL_GPIO_WritePin(GPIOH,GPIO_PIN_12,GPIO_PIN_RESET);//CAB
-    HAL_SPI_Receive(&hspi4, pData, 8,100);
-    HAL_GPIO_WritePin(GPIOH,GPIO_PIN_11,GPIO_PIN_SET);//CSH
-    HAL_GPIO_WritePin(GPIOH,GPIO_PIN_12,GPIO_PIN_SET);//CAB
-    for(int i=7;i+1;i--){
-        sick_dst[i]=spi_data[i]/32768.0*(MAX_DST_10V-MIN_DST_0V)+MIN_DST_0V;//读取出的距离 单位mm
+    if(!HAL_GPIO_ReadPin(BUSY_GPIO_Port, BUSY_Pin))
+    {
+		HAL_GPIO_WritePin(CAB_GPIO_Port, CAB_Pin, GPIO_PIN_RESET);//CAB, negative sample postive hold
+		HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_RESET);//CSL
+		HAL_SPI_Receive(&hspi4, pData, 8,100);
+		HAL_GPIO_WritePin(CS_GPIO_Port, CS_Pin, GPIO_PIN_SET);//CSH
+		HAL_GPIO_WritePin(CAB_GPIO_Port, CAB_Pin, GPIO_PIN_SET);//CAB
+      for(int i=7;i+1;i--)sick_dst[i]=spi_data[i]/32768.0f*(MAX_DST_10V-MIN_DST_0V)+MIN_DST_0V;
     }
 
     recvMsg.left.laserDistance = sick_dst[0];
     recvMsg.mid.laserDistance = sick_dst[1];
     recvMsg.right.laserDistance = sick_dst[2];
 }
+
 void Feedback_ctrl(){
     HAL_UART_Transmit_IT(&huart6, (uint8_t*)sendBag.raw, BAG_LENGTH );
     HAL_UART_Transmit_IT(&huart6, (uint8_t*)sendBag.raw, BAG_LENGTH );
