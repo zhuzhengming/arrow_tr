@@ -10,5 +10,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
         //GM6020_ctrl();
         M3508_ctrl();
         ElectroMag_ctrl();
+        Laser_ctrl();
     }
 }

@@ -27,13 +27,7 @@ Project File Date:  07/04/2021
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'arrow'
-compiling wtr_init.c...
-../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
-  void DJI_Init();
-../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
-  void GM6020_Init();
-..\Core\Src\wtr_init.c: 2 warnings, 0 errors
-compiling wtr_mission.c...
+compiling wtr_tim.c...
 ../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
   void DJI_Init();
 ../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
@@ -52,11 +46,11 @@ compiling wtr_mission.c...
   void Led_ctrl();
 ../Core/Inc/wtr_mission.h(13): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Core\Src\wtr_mission.c: 9 warnings, 0 errors
+..\Core\Src\wtr_tim.c: 9 warnings, 0 errors
 linking...
-Program Size: Code=14696 RO-data=496 RW-data=48 ZI-data=3664  
+Program Size: Code=16120 RO-data=496 RW-data=56 ZI-data=3712  
 FromELF: creating hex file...
-"arrow\arrow.axf" - 0 Error(s), 11 Warning(s).
+"arrow\arrow.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -80,7 +74,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
