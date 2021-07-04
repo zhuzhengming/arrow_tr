@@ -21,14 +21,149 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
 Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
-C:\Users\Zz\Desktop\tr\lsq\wtr_arrow\MDK-ARM\arrow.uvprojx
-Project File Date:  07/03/2021
+C:\Users\Zz\Desktop\tr\new_arrow\MDK-ARM\arrow.uvprojx
+Project File Date:  07/04/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'arrow'
-Note: source file '../Core/Src/system_stm32f4xx.c' - object file renamed from 'arrow\system_stm32f4xx.o' to 'arrow\system_stm32f4xx_1.o'.
-"arrow\arrow.axf" - 0 Error(s), 0 Warning(s).
+compiling can.c...
+compiling DJI.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+..\Core\Src\DJI.c(96): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	if(motor->Calculate.RotorAngle_0_360_Log[NOW] -  motor->Calculate.RotorAngle_0_360_Log[LAST] > (180.0))
+..\Core\Src\DJI.c: 2 warnings, 0 errors
+compiling dma.c...
+compiling stm32f4xx_it.c...
+compiling gpio.c...
+compiling spi.c...
+compiling tim.c...
+compiling GM6020.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+..\Core\Src\GM6020.c(92): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		                            (1.0f/(uwTick-h6020s[id].Calculate.last_tick)*1000.0*60.0f/360.0f);
+..\Core\Src\GM6020.c(80): warning:  #177-D: variable "last_tick"  was declared but never referenced
+  	static int last_tick[7];
+..\Core\Src\GM6020.c: 4 warnings, 0 errors
+compiling main.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+../Core/Src/main.c: 2 warnings, 0 errors
+compiling stm32f4xx_hal_msp.c...
+compiling usart.c...
+compiling M3508_ctrl.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+..\Core\Src\M3508_ctrl.c(40): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  			Pos_Ought = 0.5 * max_a * ((cur_t) / 1000) * ((cur_t) / 1000);
+..\Core\Src\M3508_ctrl.c(44): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  					- 0.5 * max_a * (timeAll - (cur_t) / 1000)
+..\Core\Src\M3508_ctrl.c(57): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  			Pos_Ought = 0.5 * max_a * ((cur_t) / 1000) * ((cur_t) / 1000);
+..\Core\Src\M3508_ctrl.c(61): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  			Pos_Ought = max_v * max_v * 0.5 / max_a
+..\Core\Src\M3508_ctrl.c(66): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  					- 0.5 * max_a * (timeAll - (cur_t) / 1000)
+..\Core\Src\M3508_ctrl.c: 7 warnings, 0 errors
+compiling wtr_can.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+..\Core\Src\wtr_can.c: 2 warnings, 0 errors
+compiling wtr_definition.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+..\Core\Src\wtr_definition.c(22): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\wtr_definition.c: 3 warnings, 0 errors
+compiling stm32f4xx_hal_rcc.c...
+compiling wtr_init.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+..\Core\Src\wtr_init.c: 2 warnings, 0 errors
+compiling wtr_mission.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+../Core/Inc/wtr_mission.h(6): warning:  #1295-D: Deprecated declaration GM6020_ctrl - give arg types
+  void GM6020_ctrl();
+../Core/Inc/wtr_mission.h(7): warning:  #1295-D: Deprecated declaration M3508_ctrl - give arg types
+  void M3508_ctrl();
+../Core/Inc/wtr_mission.h(8): warning:  #1295-D: Deprecated declaration ElectroMag_ctrl - give arg types
+  void ElectroMag_ctrl();
+../Core/Inc/wtr_mission.h(9): warning:  #1295-D: Deprecated declaration Laser_ctrl - give arg types
+  void Laser_ctrl();//张佳辉提�? 读出来的激光数据直接存到sendbag里面
+../Core/Inc/wtr_mission.h(10): warning:  #1295-D: Deprecated declaration Feedback_ctrl - give arg types
+  void Feedback_ctrl();
+../Core/Inc/wtr_mission.h(11): warning:  #1295-D: Deprecated declaration Led_ctrl - give arg types
+  void Led_ctrl();
+../Core/Inc/wtr_mission.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\wtr_mission.c: 9 warnings, 0 errors
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling stm32f4xx_hal_can.c...
+compiling wtr_uart.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+..\Core\Src\wtr_uart.c(90): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+              if(recvMsg.yaw>PI)	recvMsg.yaw = PI;
+..\Core\Src\wtr_uart.c: 3 warnings, 0 errors
+compiling wtr_tim.c...
+../Core/Inc/DJI.h(65): warning:  #1295-D: Deprecated declaration DJI_Init - give arg types
+  void DJI_Init();
+../Core/Inc/GM6020.h(32): warning:  #1295-D: Deprecated declaration GM6020_Init - give arg types
+  void GM6020_Init();
+../Core/Inc/wtr_mission.h(6): warning:  #1295-D: Deprecated declaration GM6020_ctrl - give arg types
+  void GM6020_ctrl();
+../Core/Inc/wtr_mission.h(7): warning:  #1295-D: Deprecated declaration M3508_ctrl - give arg types
+  void M3508_ctrl();
+../Core/Inc/wtr_mission.h(8): warning:  #1295-D: Deprecated declaration ElectroMag_ctrl - give arg types
+  void ElectroMag_ctrl();
+../Core/Inc/wtr_mission.h(9): warning:  #1295-D: Deprecated declaration Laser_ctrl - give arg types
+  void Laser_ctrl();//张佳辉提�? 读出来的激光数据直接存到sendbag里面
+../Core/Inc/wtr_mission.h(10): warning:  #1295-D: Deprecated declaration Feedback_ctrl - give arg types
+  void Feedback_ctrl();
+../Core/Inc/wtr_mission.h(11): warning:  #1295-D: Deprecated declaration Led_ctrl - give arg types
+  void Led_ctrl();
+../Core/Inc/wtr_mission.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\wtr_tim.c: 9 warnings, 0 errors
+compiling stm32f4xx_hal_flash.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal_flash_ramfunc.c...
+compiling stm32f4xx_hal.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal_spi.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_hal_exti.c...
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_tim.c...
+compiling stm32f4xx_hal_tim_ex.c...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_hal_uart.c...
+linking...
+Program Size: Code=14676 RO-data=496 RW-data=48 ZI-data=3664  
+FromELF: creating hex file...
+"arrow\arrow.axf" - 0 Error(s), 43 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +187,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.4.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:14
 </pre>
 </body>
 </html>

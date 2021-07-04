@@ -18,7 +18,7 @@
           <Vendor>STMicroelectronics</Vendor>
           <PackID>Keil.STM32F4xx_DFP.2.13.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
-          <Cpu>IRAM(0x20000000-0x2002FFFF) IRAM2(0x10000000-0x1000FFFF) IROM(0x8000000-0x81FFFFF)  CLOCK(25000000) FPU2 CPUTYPE("Cortex-M4") TZ</Cpu>
+          <Cpu>IRAM(0x20000000-0x2002FFFF) IRAM2(0x10000000-0x1000FFFF) IROM(0x8000000-0x81FFFFF) CLOCK(25000000) FPU2 CPUTYPE("Cortex-M4") TZ</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll></FlashDriverDll>
@@ -339,7 +339,7 @@
               <MiscControls>--gnu</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc;  ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;  ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -394,51 +394,6 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>DJI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\DJI.c</FilePath>
-            </File>
-            <File>
-              <FileName>GM6020.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\GM6020.c</FilePath>
-            </File>
-            <File>
-              <FileName>M3508_ctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\M3508_ctrl.c</FilePath>
-            </File>
-            <File>
-              <FileName>wtr_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\wtr_can.c</FilePath>
-            </File>
-            <File>
-              <FileName>wtr_definition.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\wtr_definition.c</FilePath>
-            </File>
-            <File>
-              <FileName>wtr_init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\wtr_init.c</FilePath>
-            </File>
-            <File>
-              <FileName>wtr_mission.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\wtr_mission.c</FilePath>
-            </File>
-            <File>
-              <FileName>wtr_tim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\wtr_tim.c</FilePath>
-            </File>
-            <File>
-              <FileName>wtr_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\wtr_uart.c</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>
@@ -482,6 +437,51 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>DJI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\DJI.c</FilePath>
+            </File>
+            <File>
+              <FileName>GM6020.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\GM6020.c</FilePath>
+            </File>
+            <File>
+              <FileName>M3508_ctrl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\M3508_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>wtr_can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\wtr_can.c</FilePath>
+            </File>
+            <File>
+              <FileName>wtr_definition.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\wtr_definition.c</FilePath>
+            </File>
+            <File>
+              <FileName>wtr_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\wtr_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>wtr_mission.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\wtr_mission.c</FilePath>
+            </File>
+            <File>
+              <FileName>wtr_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\wtr_tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>wtr_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\wtr_uart.c</FilePath>
             </File>
           </Files>
         </Group>

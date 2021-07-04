@@ -28,13 +28,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "wtr_init.h"
-#include "wtr_mission.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#include "wtr_init.h"
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -100,15 +99,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   WTR_Init();
   /* USER CODE END 2 */
-
+  HAL_UART_Receive_DMA(&huart6, UART6ReceiveData, BAG_LENGTH*2 );
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    Led_ctrl();
-    Laser_ctrl();
-    Feedback_ctrl();
-    HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
